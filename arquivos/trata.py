@@ -40,7 +40,7 @@ def Request(requi):
 def threads_run(idt, nome, requi):
     try:
         print('----- Iniciando Thread {} -----' .format(nome))
-        req_count = 0
+        #req_count = 0
         yf_name = yf.Ticker(nome)
         json_req = yf_name.history(period="1d")
         function_reqs(json_req, nome)
@@ -102,7 +102,6 @@ def tratamento(json_req, nome):
         }
 
         
-
         pasta = os.getcwd()+'/output/csv'
         if not os.path.exists(pasta):
             if os.path.isdir(pasta):
@@ -111,6 +110,7 @@ def tratamento(json_req, nome):
                 os.makedirs(pasta, mode=0o777, exist_ok=False)
                 print('===== Pasta criada com sucesso! =====')
 
+        #if idt == 8746:
         try:
             date = datetime.today()
             df = pd.DataFrame.from_dict(new_df)
